@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>番号:</strong>
+  <%= @card.number %>
+</p>
+
+<p>
+  <strong>カード名:</strong>
+  <%= @card.name %>
+</p>
+
+<p>
+  <strong>意味・キーワード:</strong>
+  <%= @card.text %>
+</p>
+
+<p>
+  <strong>追加テキスト:</strong>
+  <%= @card.description %>
+</p>
+
+<%= link_to 'Edit', edit_card_path(@card) %> |
+<%= link_to 'Back', cards_path %>

@@ -1,0 +1,37 @@
+<%= form_for(@tarot, html: {class: 'form-horizontal'}) do |f| %>
+  <% if @tarot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tarot.errors.count, "error") %> prohibited this tarot from being saved:</h2>
+
+      <ul>
+      <% @tarot.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, 'タロットの名前', class: 'control-label col-md-2' %>
+    <div class="col-md-9">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :author, '作者', class: 'control-label col-md-2' %>
+    <div class="col-md-9">
+      <%= f.text_field :author, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :pw, 'Password（まだ使えません）', class: 'control-label col-md-2' %>
+    <div class="col-md-9">
+      <%= f.text_field :pw, class: 'form-control' %>
+    </div>
+  </div>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-9">
+        <%= f.submit @tarot.new_record? ? 'タロットを作る' : 'タロットを更新', class: 'btn btn-primary' %>
+      </div>
+    </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tarot.name %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @tarot.author %>
+</p>
+
+<p>
+  <strong>Pw:</strong>
+  <%= @tarot.pw %>
+</p>
+
+<%= link_to 'Edit', edit_tarot_path(@tarot) %> |
+<%= link_to 'Back', tarots_path %>

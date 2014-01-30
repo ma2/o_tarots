@@ -1,0 +1,12 @@
+<h1><%= @tarot.name %>タロット CSVアップロード</h1>
+
+<%= form_tag create_from_csv_tarot_cards_path, html: {class:'form'} do %>
+    <div class="form-group">
+      <span class="help-block">CSV形式の文字列をそのままここにペーストしてください。<br>名前,意味,補助の文字列 の順番になっている必要があります。また番号は不要で行の順番がそのまま番号になります。</span>
+      <%= text_area_tag 'cards[csv]', nil, rows: 22, cols: 40, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= submit_tag 'アップロード', class: 'btn btn-primary' %>
+    </div>
+<% end %>
+

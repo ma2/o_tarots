@@ -1,0 +1,30 @@
+<h1>タロット一覧</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>名称</th>
+    <th>作者</th>
+    <!--<th>パスワード</th>-->
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @tarots.each do |tarot| %>
+      <tr>
+        <td><%= link_to tarot.name, tarot_cards_path(tarot) %></td>
+        <td><%= tarot.author %></td>
+        <!--<td><%= tarot.pw ? 'あり' : 'なし' %></td>-->
+        <td><%= link_to '編集', edit_tarot_path(tarot) %> |
+          <%= link_to '遊ぶ', play_tarot_cards_path(tarot) %></td>
+        <td><%= link_to '削除', tarot, method: :delete, data: { confirm: '削除しますか?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新しいタロットを作る', new_tarot_path %>
