@@ -38,6 +38,7 @@ end
 
 # for Heroku
 gem 'rails_12factor', group: :production
+gem 'newrelic_rpm'
 
 # Twitter Bootstrap and From
 gem 'bootstrap-sass'
