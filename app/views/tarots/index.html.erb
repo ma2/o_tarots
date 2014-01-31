@@ -3,7 +3,7 @@
 <div id="tarots" class="container">
   <% @tarots.each do |tarot| %>
     <div class="row">
-      <div class="col-sm-4"><h3><%= tarot.name %>　<small><%= tarot.author %></small></h3></div>
+      <div class="col-sm-6"><h3><%= tarot.name %>　<small><%= tarot.author %></small></h3></div>
       <div class="col-sm-4" style="margin-top: 15px">
         <%= link_to '使う', play_tarot_cards_path(tarot), class:'btn btn-default' %>
         <%= link_to 'みる', tarot_cards_path(tarot), class:'btn btn-default' %>
