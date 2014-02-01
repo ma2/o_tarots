@@ -1,13 +1,9 @@
-<h1><%= @tarot.name %></h1>
-<h3>by <%= @tarot.author %></h3>
-<%= link_to draw_one_tarot_cards_path(@tarot), class: 'btn btn-primary', data: {remote: true} do %>
+<h2><%= @tarot.name %> <small><%= @tarot.author %></small></h2>
+<%= link_to draw_one_tarot_cards_path(@tarot), class: 'btn btn-primary btn-sm', data: {remote: true} do %>
     <span class="glyphicon glyphicon-plus"></span>&nbsp;カード
 <% end %>　
-<%= link_to  play_tarot_cards_path(@tarot), class: 'btn btn-default' do %>
+<%= link_to  play_tarot_cards_path(@tarot), class: 'btn btn-default btn-sm' do %>
     <span class="glyphicon glyphicon-refresh"></span>&nbsp;シャッフル
 <% end %><br><br>
-<!--<table class="table table-striped" id="cards">-->
-  <!--<tbody></tbody>-->
-<!--</table>-->
 <div id="cards">
 </div>
