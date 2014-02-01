@@ -6,6 +6,7 @@ class CardsController < ApplicationController
   # GET /tarots/:tarot_id/cards/play
   # GET /tarots/:tarot_id/cards/play.json
   def play
+    @play_mode = true
     session[:cards] = @tarot.cards.map(&:id).shuffle
   end
 

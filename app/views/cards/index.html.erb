@@ -1,5 +1,5 @@
 <h1><%= @tarot.name %> カード一覧</h1>
-
+<%= link_to '全削除', tarot_path(@tarot), method: :delete, class: 'btn btn-danger', data: { confirm: 'すべてのカードとタロットのデータを削除します' } %>
 <table class="table table-striped">
   <thead>
   <tr>
