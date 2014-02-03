@@ -1,4 +1,6 @@
-<h1><%= @tarot.name %> カード一覧</h1>
+<h1><%= @tarot.name %><small>カード一覧</small></h1>
+<%= link_to 'カードをアップロード', upload_tarot_cards_path(@tarot), class: 'btn btn-success' %>
+<%= link_to 'csvでダウンロード', write_to_csv_tarot_cards_path(@tarot), class: 'btn btn-success' %>
 <%= link_to '全削除', tarot_path(@tarot), method: :delete, class: 'btn btn-danger', data: { confirm: 'すべてのカードとタロットのデータを削除します' } %>
 <table class="table table-striped">
   <thead>
@@ -25,6 +27,3 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'カードデータをアップロード', upload_tarot_cards_path(@tarot) %>

@@ -47,6 +47,15 @@ class CardsController < ApplicationController
     end
   end
 
+  def write_to_csv
+    csv_string = CSV.generate do |csv|
+      @tarot.cards.each do |c|
+        csv << [c.name, c.text, c.description].map{|e|e ? e.encode('Shift_JIS') : ''}
+      end
+    end
+    send_data csv_string, filename:"#{@tarot.name}.csv", type:'text/csv'
+  end
+
   # GET /tarots/:tarot_id/cards
   # GET /tarots/:tarot_id/cards.json
   def index

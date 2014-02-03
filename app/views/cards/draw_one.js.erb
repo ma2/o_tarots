@@ -1,2 +1,11 @@
 $('div#cards').append("<%= escape_javascript render('card_row') %>");
-$('div.panel:last').slideDown();
+$('div.panel:last').slideDown('normal', function() {
+            var $card = $('div.panel:last');
+            if ($(window).height() < $card.offset().top + $card.height()) {
+                $('html, body').animate({
+                            scrollTop: $(document).height()-$(window).height()},
+                        'normal',
+                        "linear"
+                );
+            }
+        });

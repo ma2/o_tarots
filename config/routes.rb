@@ -13,6 +13,7 @@ OTarots::Application.routes.draw do
         get 'play'
         get 'draw_one'
         get 'upload'
+        get 'write_to_csv'
         post 'create_from_csv'
       end
     end
