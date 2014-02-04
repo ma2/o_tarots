@@ -13,7 +13,7 @@ class CardsController < ApplicationController
   # GET /tarots/:tarot_id/cards/draw_one
   # GET /tarots/:tarot_id/cards/draw_one.json
   def draw_one
-    # session[:cards]はランダム化しかカードidの配列
+    # session[:cards]はランダム化したカードidの配列
     # すでに全カード使いきっていたら再設定
     session[:cards] = @tarot.cards.map(&:id).shuffle if session[:cards].empty?
     @card = Card.find(session[:cards].pop)
@@ -30,10 +30,8 @@ class CardsController < ApplicationController
   # POST /tarots/:tarot_id/cards/create_from_csv
   # POST /tarots/:tarot_id/cards/create_from_csv.json
   def create_from_csv
-    i = @tarot.cards.count
     CSV.parse(csv_params[:csv]) do |row|
-      @tarot.cards << Card.new(name:row[0], text:row[1], description:row[2], number: i)
-      i += 1
+      @tarot.cards << Card.new(name:row[0], text:row[1], description:row[2])
     end
 
     respond_to do |format|

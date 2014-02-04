@@ -1,5 +1,25 @@
 class TarotsController < ApplicationController
-  before_action :set_tarot, only: [:show, :edit, :update, :destroy, :play]
+  before_action :set_tarot, only: [:show, :edit, :update, :destroy]
+
+  # GET /tarots/play_random
+  # GET /tarots/play_random.json
+  def play_random
+    @play_random_mode = true
+    session[:cards] = Card.all.map(&:id).shuffle
+  end
+
+  # GET /tarots/:tarot_id/cards/draw_one
+  # GET /tarots/:tarot_id/cards/draw_one.json
+  def draw_random_one
+    # session[:cards]はランダム化したカードidの配列
+    # すでに全カード使いきっていたら再設定
+    session[:cards] = Card.all.map(&:id).shuffle if session[:cards].empty?
+    @card = Card.find(session[:cards].pop)
+    respond_to do |format|
+      format.json { render action: 'show', status: :created }
+      format.js
+    end
+  end
 
   # GET /tarots
   # GET /tarots.json

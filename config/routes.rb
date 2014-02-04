@@ -5,6 +5,10 @@ OTarots::Application.routes.draw do
     #  get 'play'
     #  get 'draw_one'
     #end
+    collection do
+      get 'play_random'
+      get 'draw_random_one'
+    end
     resources :cards do
       member do
         get 'confirm'
