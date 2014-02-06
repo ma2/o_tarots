@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# specify ruby version
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~>4.0.0'
 
@@ -40,7 +43,7 @@ end
 gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
 
-# Twitter Bootstrap and From
+# Twitter Bootstrap
 gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'
