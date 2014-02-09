@@ -10,11 +10,11 @@
       </button>
       <%= link_to 'Home', root_path, class: 'navbar-brand' %>
       <% if @play_mode %>
-          <%= link_to 'カード', draw_one_tarot_cards_path(@tarot), class: 'navbar-brand', data: {remote: true} %>
+          <%= link_to 'カード', draw_one_tarot_cards_path(@tarot), class: 'navbar-brand draw-card', data: {remote: true, disable_with: '...'} %>
           <%= link_to 'シャッフル', play_tarot_cards_path(@tarot), class: 'navbar-brand' %>
       <% end %>
       <% if @play_random_mode %>
-          <%= link_to 'カード', draw_random_one_tarots_path , class: 'navbar-brand', data: {remote: true} %>
+          <%= link_to 'カード', draw_random_one_tarots_path , class: 'navbar-brand draw-card', data: {remote: true, disable_with: '...'} %>
           <%= link_to 'シャッフル', play_random_tarots_path , class: 'navbar-brand' %>
       <% end %>
     </div>

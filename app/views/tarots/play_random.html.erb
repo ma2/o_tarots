@@ -1,5 +1,5 @@
 <h2>偶然タロット <small>すべてのタロット</small></h2>
-<%= link_to draw_random_one_tarots_path, class: 'btn btn-primary btn-sm', data: {remote: true} do %>
+<%= link_to draw_random_one_tarots_path, class: 'btn btn-primary btn-sm draw-card', data: {remote: true, disable_with: '...'} do %>
     <span class="glyphicon glyphicon-plus"></span>&nbsp;カード
 <% end %>　
 <%= link_to  play_random_tarots_path, class: 'btn btn-default btn-sm' do %>

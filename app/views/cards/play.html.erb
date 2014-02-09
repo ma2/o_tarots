@@ -1,5 +1,5 @@
 <h2><%= @tarot.name %> <small><%= @tarot.author %></small></h2>
-<%= link_to draw_one_tarot_cards_path(@tarot), class: 'btn btn-primary btn-sm', data: {remote: true} do %>
+<%= link_to draw_one_tarot_cards_path(@tarot), class: 'btn btn-primary btn-sm draw-card', data: {remote: true, disable_with: '...'} do %>
     <span class="glyphicon glyphicon-plus"></span>&nbsp;カード
 <% end %>　
 <%= link_to  play_tarot_cards_path(@tarot), class: 'btn btn-default btn-sm' do %>
