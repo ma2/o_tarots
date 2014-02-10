@@ -2,12 +2,17 @@ require 'csv'
 class CardsController < ApplicationController
   before_action :set_tarot
   before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :check_pw, only: [:edit, :destroy]
 
   # GET /tarots/:tarot_id/cards/play
   # GET /tarots/:tarot_id/cards/play.json
   def play
     @play_mode = true
     session[:cards] = @tarot.cards.map(&:id).shuffle
+    @tname = @tarot.name
+    @tauthor = @tarot.author
+    @draw_path = draw_one_tarot_cards_path(@tarot)
+    @shuffle_path = play_tarot_cards_path(@tarot)
   end
 
   # GET /tarots/:tarot_id/cards/draw_one
@@ -131,5 +136,9 @@ class CardsController < ApplicationController
 
   def csv_params
     params.require(:cards).permit(:csv)
+  end
+
+  def check_pw
+    false
   end
 end

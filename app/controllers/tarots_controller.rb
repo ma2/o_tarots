@@ -4,8 +4,13 @@ class TarotsController < ApplicationController
   # GET /tarots/play_random
   # GET /tarots/play_random.json
   def play_random
-    @play_random_mode = true
+    @play_mode = true
     session[:cards] = Card.all.map(&:id).shuffle
+    @tname = '偶然タロット'
+    @tauthor = 'すべてのタロット使い'
+    @draw_path = draw_random_one_tarots_path
+    @shuffle_path = play_random_tarots_path
+    render '/cards/play'
   end
 
   # GET /tarots/:tarot_id/cards/draw_one
