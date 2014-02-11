@@ -1,11 +1,8 @@
 OTarots::Application.routes.draw do
 
   resources :tarots do
-    #member do
-    #  get 'play'
-    #  get 'draw_one'
-    #end
     collection do
+      get 'about'
       get 'play_random'
       get 'draw_random_one'
     end

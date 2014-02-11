@@ -1,6 +1,9 @@
 class TarotsController < ApplicationController
   before_action :set_tarot, only: [:show, :edit, :update, :destroy]
 
+  def about
+  end
+
   # GET /tarots/play_random
   # GET /tarots/play_random.json
   def play_random

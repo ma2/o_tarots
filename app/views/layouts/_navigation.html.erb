@@ -9,6 +9,9 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+      <% unless @play_mode %>
+          <%= link_to 'About', about_tarots_path, class: 'navbar-brand' %>
+      <% end %>
       <% if @play_mode %>
           <%= link_to 'カード',@draw_path, class: 'navbar-brand draw-card', data: {remote: true, disable_with: 'カード'} %>
           <%= link_to 'シャッフル', @shuffle_path, class: 'navbar-brand' %>

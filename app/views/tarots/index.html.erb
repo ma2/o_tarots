@@ -1,22 +1,25 @@
-<h1>思考ツールとしてのタロット <small>オリジナル作品集</small></h1>
-
 <div id="tarots" class="container">
+  <h3>思考ツールとしてのタロット <small>オリジナル作品集</small></h3>
   <div class="row">
-    <div class="col-sm-6"><h3>偶然タロット　<small>すべてのタロット</small></h3></div>
-    <div class="col-sm-4" style="margin-top: 15px">
-      <%= link_to '使う', play_random_tarots_path , class:'btn btn-default' %>
+    <!--<div class="col-sm-6"><p style="font-size: 16px">偶然タロット　<small>すべてのタロット</small></p></div>-->
+    <div class="col-sm-6"><h4>偶然タロット　<small>すべてのタロット使い</small></h4></div>
+    <div class="col-sm-6">
+      <%= link_to '使う', play_random_tarots_path , class:'btn btn-default btn-sm', style: 'margin-top: 5px' %>
     </div>
   </div>
   <% @tarots.each do |tarot| %>
     <div class="row">
-      <div class="col-sm-6"><h3><%= tarot.name %>　<small><%= tarot.author %></small></h3></div>
-      <div class="col-sm-4" style="margin-top: 15px">
+      <div class="col-sm-6"><h4><%= tarot.name %>　<small><%= tarot.author %></small></h4></div>
+      <div class="col-sm-6">
+        <div class="btn-group btn-group-sm" style="margin-top: 5px">
         <%= link_to '使う', play_tarot_cards_path(tarot), class:'btn btn-default' %>
         <%= link_to 'みる・作る', tarot_cards_path(tarot), class:'btn btn-default' %>
         <%= link_to '直す', edit_tarot_path(tarot), class:'btn btn-default' %>
+        </div>
       </div>
     </div>
   <% end %>
   <br>
   <%= link_to '新しいタロットを作る', new_tarot_path, class: 'btn btn-primary' %>
 </div>
+
