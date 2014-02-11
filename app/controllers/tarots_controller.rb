@@ -32,7 +32,7 @@ class TarotsController < ApplicationController
   # GET /tarots
   # GET /tarots.json
   def index
-    @tarots = Tarot.all
+    @tarots = Tarot.all.order(:created_at)
   end
 
   # GET /tarots/1
