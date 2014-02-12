@@ -4,14 +4,14 @@
     <!--<div class="col-sm-6"><p style="font-size: 16px">偶然タロット　<small>すべてのタロット</small></p></div>-->
     <div class="col-sm-6"><h4>偶然タロット　<small>すべてのタロット使い</small></h4></div>
     <div class="col-sm-6">
-      <%= link_to '使う', play_random_tarots_path , class:'btn btn-default btn-sm', style: 'margin-top: 5px' %>
+      <%= link_to '使う', play_random_tarots_path , class:'btn btn-default btn-sm', style: 'margin: 5px 0' %>
     </div>
   </div>
   <% @tarots.each do |tarot| %>
-    <div class="row">
+    <div class="row <%= cycle('odd','even') -%>">
       <div class="col-sm-6"><h4><%= tarot.name %>　<small><%= tarot.author %></small></h4></div>
       <div class="col-sm-6">
-        <div class="btn-group btn-group-sm" style="margin-top: 5px">
+        <div class="btn-group btn-group-sm" style="margin: 5px 0">
         <%= link_to '使う', play_tarot_cards_path(tarot), class:'btn btn-default' %>
         <%= link_to 'みる・作る', tarot_cards_path(tarot), class:'btn btn-default' %>
         <%= link_to '直す', edit_tarot_path(tarot), class:'btn btn-default' %>
