@@ -3,7 +3,7 @@ $('div.panel:last').slideDown('normal', function () {
     var $card = $('div.panel:last');
     if ($(window).height() < $card.offset().top + $card.height()) {
         $('html, body').animate({
-                    scrollTop: $(document).height() - $(window).height()},
+                    scrollTop: $(document).height() - $(window).height() - 50},
                 'normal',
                 "linear"
         );
