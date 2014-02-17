@@ -1,8 +1,11 @@
-<div class="panel panel-default" style="display: none">
+<div class="panel panel-success" style="display: none">
   <div class="panel-heading">
     <h3 class="panel-title"><%= @card.roman %> <%= @card.name %></h3>
   </div>
   <div class="panel-body">
     <%= @card.text %>
   </div>
+  <% if @card.description.size > 0 %>
+      <div class="panel-footer"><%= @card.description %></div>
+  <% end %>
 </div>
