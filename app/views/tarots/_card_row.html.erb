@@ -5,4 +5,7 @@
   <div class="panel-body">
     <%= @card.text %>
   </div>
+  <% if @card.description.present? %>
+      <div class="panel-footer"><%= @card.description %></div>
+  <% end %>
 </div>

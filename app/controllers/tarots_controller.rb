@@ -21,7 +21,7 @@ class TarotsController < ApplicationController
   def draw_random_one
     # session[:cards]はランダム化したカードidの配列
     # すでに全カード使いきっていたら再設定
-    session[:cards] = Card.all.map(&:id).shuffle if session[:cards].empty?
+    session[:cards] = Card.all.map(&:id).shuffle.shuffle if session[:cards].empty?
     @card = Card.find(session[:cards].pop)
     respond_to do |format|
       format.json { render action: 'show', status: :created }

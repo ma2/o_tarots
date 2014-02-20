@@ -20,7 +20,7 @@ class CardsController < ApplicationController
   def draw_one
     # session[:cards]はランダム化したカードidの配列
     # すでに全カード使いきっていたら再設定
-    session[:cards] = @tarot.cards.map(&:id).shuffle if session[:cards].empty?
+    session[:cards] = @tarot.cards.map(&:id).shuffle.shuffle if session[:cards].empty?
     @card = Card.find(session[:cards].pop)
     @panel = %w(panel-default panel-primary panel-success panel-info panel-warning panel-danger).shuffle.shuffle[0]
     respond_to do |format|
