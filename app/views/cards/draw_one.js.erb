@@ -1,4 +1,4 @@
-$('div#cards').append("<%= escape_javascript render('card_row') %>");
+$('div#cards').append("<%= escape_javascript render(partial:'card_row', locals:{panel: @panel}) %>");
 $('div.panel:last').slideDown('normal', function () {
     var $card = $('div.panel:last');
     if ($(window).height() < $card.offset().top + $card.height()) {

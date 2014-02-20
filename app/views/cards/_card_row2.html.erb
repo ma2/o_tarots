@@ -1,0 +1,11 @@
+<div class="row" style="display: none">
+  <div class="col-md-12">
+    <h3 class="panel-title"><%= @card.roman %> <%= @card.name %></h3>
+  </div>
+  <div class="col-md-12">
+    <%= @card.text %>
+  </div>
+  <% if @card.description.present? %>
+      <div class="col-md-12"><%= @card.description %></div>
+  <% end %>
+</div>
