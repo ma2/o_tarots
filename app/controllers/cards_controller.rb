@@ -1,8 +1,31 @@
 require 'csv'
 class CardsController < ApplicationController
+  include TarotOwner
   before_action :set_tarot
   before_action :set_card, only: [:show, :edit, :update, :destroy]
-  before_action :check_pw, only: [:edit, :destroy]
+  before_action :check_pw, only: [:edit, :destroy, :upload, :write_to_csv]
+
+  def login
+    @from = params[:from]
+  end
+
+  def confirm_login
+    set_tarot_auth @tarot, params[:password]
+    if params[:from] == '0'
+      redirect_to tarot_cards_path(@tarot)
+      return
+    end
+    redirect_to edit_tarot_path(@tarot)
+  end
+
+  def playx
+    @play_mode = true
+    session[:cards] = @tarot.cards.map(&:id).shuffle
+    @tname = @tarot.name
+    @tauthor = @tarot.author
+    @draw_path = draw_one_tarot_cards_path(@tarot)
+    @shuffle_path = play_tarot_cards_path(@tarot)
+  end
 
   # GET /tarots/:tarot_id/cards/play
   # GET /tarots/:tarot_id/cards/play.json
@@ -37,7 +60,7 @@ class CardsController < ApplicationController
   # POST /tarots/:tarot_id/cards/create_from_csv.json
   def create_from_csv
     CSV.parse(csv_params[:csv]) do |row|
-      @tarot.cards << Card.new(name:row[0], text:row[1], description:row[2])
+      @tarot.cards << Card.new(name: row[0], text: row[1], description: row[2])
     end
 
     respond_to do |format|
@@ -54,10 +77,10 @@ class CardsController < ApplicationController
   def write_to_csv
     csv_string = CSV.generate do |csv|
       @tarot.cards.each do |c|
-        csv << [c.name, c.text, c.description].map{|e|e ? e.encode('Shift_JIS') : ''}
+        csv << [c.name, c.text, c.description].map { |e| e ? e.encode('Shift_JIS') : '' }
       end
     end
-    send_data csv_string, filename:"#{@tarot.name}.csv", type:'text/csv'
+    send_data csv_string, filename: "#{@tarot.name}.csv", type: 'text/csv'
   end
 
   # GET /tarots/:tarot_id/cards
@@ -121,25 +144,25 @@ class CardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_card
-      @card = Card.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_card
+    @card = Card.find(params[:id])
+  end
 
-    def set_tarot
-      @tarot = Tarot.find(params[:tarot_id])
-    end
+  def set_tarot
+    @tarot = Tarot.find(params[:tarot_id])
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-    def card_params
-      params.require(:card).permit(:number, :name, :text, :description)
-    end
+  def card_params
+    params.require(:card).permit(:number, :name, :text, :description)
+  end
 
   def csv_params
     params.require(:cards).permit(:csv)
   end
 
   def check_pw
-    false
+    redirect_to login_tarot_cards_path(@tarot, from: 0) unless your_tarot? @tarot
   end
 end

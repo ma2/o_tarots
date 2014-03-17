@@ -1,29 +1,31 @@
-<h1><%= @tarot.name %><small>カード一覧</small></h1>
-<%= link_to 'カードをアップロード', upload_tarot_cards_path(@tarot), class: 'btn btn-success' %>
-<%= link_to 'csvでダウンロード', write_to_csv_tarot_cards_path(@tarot), class: 'btn btn-success' %>
-<%= link_to '全削除', tarot_path(@tarot), method: :delete, class: 'btn btn-danger', data: { confirm: 'すべてのカードとタロットのデータを削除します' } %>
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>#</th>
-    <th>カード名</th>
-    <th>意味・キーワード</th>
-    <th>追加テキスト</th>
-    <th></th>
-  </tr>
-  </thead>
+<div id="tarot_cards" class="container">
+  <h1><%= @tarot.name %>
+    <small>カード一覧</small></h1>
+  <%= link_to 'カードをアップロード', upload_tarot_cards_path(@tarot), class: 'btn btn-success' %>
+  <%= link_to 'csvでダウンロード', write_to_csv_tarot_cards_path(@tarot), class: 'btn btn-success' %>
+  <%= link_to '全削除', tarot_path(@tarot), method: :delete, class: 'btn btn-danger', data: {confirm: 'すべてのカードとタロットのデータを削除します'} %>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>カード名</th>
+      <th>意味・キーワード</th>
+      <th>追加テキスト</th>
+      <th></th>
+    </tr>
+    </thead>
 
-  <tbody>
-  <% @cards.each do |card| %>
-      <tr>
-        <td><%= card.number %></td>
-        <td><%= card.name %></td>
-        <td><%= card.text %></td>
-        <td><%= card.description %></td>
-        <td><%= link_to '編集', edit_tarot_card_path(@tarot, card) %> |
-          <%= link_to '削除', tarot_card_path(@tarot, card), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-
+    <tbody>
+    <% @cards.each do |card| %>
+        <tr>
+          <td><%= card.number %></td>
+          <td><%= card.name %></td>
+          <td><%= card.text %></td>
+          <td><%= card.description %></td>
+          <td><%= link_to '編集', edit_tarot_card_path(@tarot, card) %> |
+            <%= link_to '削除', tarot_card_path(@tarot, card), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

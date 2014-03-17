@@ -12,9 +12,12 @@ OTarots::Application.routes.draw do
       end
       collection do
         get 'play'
+        get 'playx'
         get 'draw_one'
         get 'upload'
         get 'write_to_csv'
+        get 'login'
+        post 'confirm_login'
         post 'create_from_csv'
       end
     end

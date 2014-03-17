@@ -1,5 +1,7 @@
 class TarotsController < ApplicationController
+  include TarotOwner
   before_action :set_tarot, only: [:show, :edit, :update, :destroy]
+  before_action :check_pw, only: [:edit, :destroy]
 
   def about
   end
@@ -90,13 +92,17 @@ class TarotsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tarot
-      @tarot = Tarot.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tarot
+    @tarot = Tarot.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tarot_params
-      params.require(:tarot).permit(:name, :author, :pw)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tarot_params
+    params.require(:tarot).permit(:name, :author, :pw)
+  end
+
+  def check_pw
+    redirect_to login_tarot_cards_path(@tarot, from:1) unless your_tarot? @tarot
+  end
 end

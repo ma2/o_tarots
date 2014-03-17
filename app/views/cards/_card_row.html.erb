@@ -1,6 +1,6 @@
 <div class="panel <%=panel-%>" style="display: none">
   <div class="panel-heading">
-    <p class="panel-title"><%= @card.roman %> <%= @card.name %></p>
+    <p class="panel-title"><%= to_roman @card.number %> <%= @card.name %></p>
   </div>
   <div class="panel-body">
     <%= @card.text %>

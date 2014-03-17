@@ -1,7 +1,7 @@
 <%= form_for(@tarot, html: {class: 'form-horizontal'}) do |f| %>
   <% if @tarot.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@tarot.errors.count, "error") %> prohibited this tarot from being saved:</h2>
+      <h2><%= pluralize(@tarot.errors.count, 'error') %> prohibited this tarot from being saved:</h2>
 
       <ul>
       <% @tarot.errors.full_messages.each do |msg| %>
@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :pw, 'Password（まだ使えません）', class: 'control-label col-md-2' %>
+    <%= f.label :pw, 'Password', class: 'control-label col-md-2' %>
     <div class="col-md-9">
       <%= f.text_field :pw, class: 'form-control' %>
     </div>
