@@ -1,0 +1,16 @@
+<div id="confirm" class="container">
+  <h1>パスワード確認</h1>
+  <%= form_tag(confirm_login_tarot_cards_path(@tarot), class: 'form-inline') do %>
+    <div class="form-group">
+      <div class="col-md-12">
+        <%= hidden_field_tag :from, params[:from] %>
+        <%= text_field_tag :password, '', class: 'form-control', placeholder: 'パスワード' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-12">
+        <%= submit_tag '送信', class: 'btn btn-primary' %>
+      </div>
+    </div>
+<% end %>
+</div>
