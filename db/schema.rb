@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125130803) do
+ActiveRecord::Schema.define(version: 20140319144747) do
 
   create_table "cards", force: true do |t|
     t.integer  "number"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140125130803) do
     t.string   "pw"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
 
 end

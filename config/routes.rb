@@ -1,5 +1,12 @@
 OTarots::Application.routes.draw do
 
+  resources :world do
+    member do
+      get 'shuffle'
+      get 'draw'
+    end
+  end
+
   resources :tarots do
     collection do
       get 'about'
