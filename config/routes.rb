@@ -1,8 +1,7 @@
 OTarots::Application.routes.draw do
 
-  resources :world do
+  resources :world, only: [:show] do
     member do
-      get 'shuffle'
       get 'draw'
     end
   end

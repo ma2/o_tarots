@@ -18,7 +18,9 @@
         <div class="btn-group btn-group-sm" style="margin: 5px 0">
         <%= link_to 'カードをみる・作る', tarot_cards_path(tarot), class:'btn btn-default' %>
           <%= link_to '直す', edit_tarot_path(tarot), class:'btn btn-default' %>
-          <%= link_to '専用画面', playx_tarot_cards_path(tarot), class:'btn btn-default' %>
+          <% if tarot.key %>
+          <%= link_to '専用画面', world_path(tarot.key), class:'btn btn-default' %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -55,6 +55,7 @@ class TarotsController < ApplicationController
   # POST /tarots.json
   def create
     @tarot = Tarot.new(tarot_params)
+    @tarot.key = generate_new_key
 
     respond_to do |format|
       if @tarot.save
@@ -70,6 +71,9 @@ class TarotsController < ApplicationController
   # PATCH/PUT /tarots/1
   # PATCH/PUT /tarots/1.json
   def update
+    if @tarot.key.blank?
+      @tarot.key = generate_new_key
+    end
     respond_to do |format|
       if @tarot.update(tarot_params)
         format.html { redirect_to @tarot, notice: 'Tarot was successfully updated.' }
@@ -104,5 +108,16 @@ class TarotsController < ApplicationController
 
   def check_pw
     redirect_to login_tarot_cards_path(@tarot, from:1) unless your_tarot? @tarot
+  end
+
+  # ランダムな英数字8文字
+  # すでにあるものは回避する
+  def generate_new_key
+    r = SecureRandom.base64(6)
+    keys = Tarot.pluck(:key)
+    while keys.include? r do
+      r = SecureRandom.base64(6)
+    end
+    r
   end
 end

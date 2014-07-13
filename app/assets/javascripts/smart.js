@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require fastclick
 //= require shake
-
+//= require jquery.plugin.pullToRefresh
+//= require world

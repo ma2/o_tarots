@@ -2,10 +2,15 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://www.yoursite.com/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="http://www.yoursite.com/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+    <link href="http://www.yoursite.com/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+    <link href="http://www.yoursite.com/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
     <title><%= content_for?(:title) ? yield(:title) : 'YTarots' %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Yonemitsu' Tarots as a Thinking tool" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
