@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 1.2'
 
 # for Heroku
 gem 'rails_12factor', group: :production
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 
 # Twitter Bootstrap
 gem 'bootstrap-sass'
@@ -41,7 +41,6 @@ group :development do
 end
 
 # Act as list
-#gem 'ranked-model'
 gem 'acts_as_list'
 
 group :doc do
