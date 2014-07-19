@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require fastclick
 //= require shake
 //= require jquery.plugin.pullToRefresh
