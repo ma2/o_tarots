@@ -36,6 +36,11 @@ class CardsController < ApplicationController
     @tauthor = @tarot.author
     @draw_path = draw_one_tarot_cards_path(@tarot)
     @shuffle_path = play_tarot_cards_path(@tarot)
+    # シャッフルでは画面リドローした方がいいので描画しなおす
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   # GET /tarots/:tarot_id/cards/draw_one
