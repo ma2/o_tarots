@@ -20,3 +20,6 @@
 
 # Ignore RubyMine settings
 /.idea
+
+# Ignore secret token
+/config/initializers/secret_token.rb
